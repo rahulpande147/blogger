@@ -1,9 +1,11 @@
 package com.blogs.blogger.controllers;
 
 import com.blogs.blogger.models.Blog;
+import com.blogs.blogger.models.User;
 import com.blogs.blogger.services.BlogService;
 import com.blogs.blogger.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -36,5 +38,7 @@ public class BlogController {
 
         return blogService.delete(userId, blogId);
     }
+
+
 
 }

@@ -4,6 +4,9 @@ package com.blogs.blogger.services;
 import com.blogs.blogger.daoimpl.UserRepository;
 import com.blogs.blogger.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -54,7 +57,11 @@ public class UserService {
                 });
     }
 
-
+    public Page<User> getByWord(Optional<String> word,
+                                Optional<Integer> page, Optional<String> sortBy) {
+        return userRepository.findByWord(word.orElse(" "),
+                PageRequest.of(page.orElse(0), 5, Sort.Direction.ASC, sortBy.orElse("id")));
+    }
 
 
 

@@ -3,6 +3,7 @@ package com.blogs.blogger.controllers;
 import com.blogs.blogger.models.User;
 import com.blogs.blogger.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,5 +39,12 @@ public class UserController {
     @DeleteMapping("/user/{id}")
     public Optional deleteUser (@PathVariable Long id){
         return userService.deleteUser(id);
+    }
+
+    @GetMapping("/user/search")
+    public Page<User> getByWord (@RequestParam Optional<String> name,
+                                 @RequestParam Optional<Integer> page,
+                                 @RequestParam Optional<String> sortBy){
+        return userService.getByWord(name, page, sortBy);
     }
 }
