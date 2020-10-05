@@ -18,27 +18,26 @@ public class User {
     @JsonIgnore
     private List<Blog> blog;
 
-    //@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    //@JsonIgnore
-    //private Login login;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Login login;
 
     public User() {
     }
 
-    public User(Long id, String name, List<Blog> blog /*Login login*/) {
+    public User(Long id, String name, List<Blog> blog, Login login) {
         this.id = id;
         this.name = name;
         this.blog = blog;
-        //this.login = login;
+        this.login = login;
     }
 
-    /*public Login getLogin() {
+    public Login getLogin() {
         return login;
     }
 
     public void setLogin(Login login) {
         this.login = login;
-    }*/
+    }
 
     public Long getId() {
         return id;

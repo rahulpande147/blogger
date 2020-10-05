@@ -17,24 +17,24 @@ public class Login {
 
     /*@OneToOne(fetch = FetchType.LAZY, optional = false)
     @JsonIgnore
-    @JoinColumn(name = "users_username", nullable = false)
-    */
-   /* @OneToOne
+    @JoinColumn(name = "users_username", nullable = false)*/
+
+    @OneToOne
     @MapsId
     @JsonIgnore
-    private User user;*/
+    private User user;
 
     public Login() {
     }
 
 
-    public Login(Long id, String username, String role, String password, Boolean enabled /*User user*/) {
+    public Login(Long id, String username, String role, String password, Boolean enabled , User user) {
         this.id = id;
         this.username = username;
         this.role = role;
         this.password = password;
         this.active = enabled;
-        //this.user = user;
+        this.user = user;
     }
 
     public Long getId() {
@@ -77,13 +77,13 @@ public class Login {
         this.active = enabled;
     }
 
-    /*public User getUsers() {
+    public User getUsers() {
         return user;
     }
 
     public void setUsers(User users) {
         this.user = users;
-    }*/
+    }
 }
 
 
