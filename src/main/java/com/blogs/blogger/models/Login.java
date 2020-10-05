@@ -8,7 +8,6 @@ import javax.persistence.*;
 public class Login {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long id;
     public String username;
     public String role;
@@ -21,7 +20,7 @@ public class Login {
 
     @OneToOne
     @MapsId
-    @JsonIgnore
+    //@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private User user;
 
     public Login() {
@@ -70,7 +69,7 @@ public class Login {
     }
 
     public Boolean getEnabled() {
-        return active;
+        return true;
     }
 
     public void setEnabled(Boolean enabled) {

@@ -1,4 +1,4 @@
-package com.blogs.blogger.secconfiguration;
+/*package com.blogs.blogger.secconfiguration;
 
 import com.blogs.blogger.daoimpl.LoginRepository;
 import com.blogs.blogger.daoimpl.UserRepository;
@@ -18,6 +18,7 @@ public class UserDetailService implements UserDetailsService {
     @Autowired
     private LoginRepository loginRepository;
 
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<Login> login = loginRepository.findByUsername(username);
@@ -27,4 +28,5 @@ public class UserDetailService implements UserDetailsService {
         return login.map(UserDetail :: new).get();
 
     }
-}
+
+}*/

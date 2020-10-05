@@ -19,6 +19,8 @@ public class User {
     private List<Blog> blog;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    //@OneToOne
+    //@MapsId
     private Login login;
 
     public User() {

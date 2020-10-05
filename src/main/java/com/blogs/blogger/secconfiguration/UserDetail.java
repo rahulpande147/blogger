@@ -1,4 +1,4 @@
-package com.blogs.blogger.secconfiguration;
+/*package com.blogs.blogger.secconfiguration;
 
 import com.blogs.blogger.models.Login;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,6 +18,7 @@ public class UserDetail implements UserDetails {
     private Boolean enabled;
     private List<GrantedAuthority> authorities;
 
+
     public UserDetail(Login login) {
         this.username = login.getUsername();
         this.password = login.getPassword();
@@ -29,36 +30,37 @@ public class UserDetail implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return authorities;
     }
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return username;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }
+*/
