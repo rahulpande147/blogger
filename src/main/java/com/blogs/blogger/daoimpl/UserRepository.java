@@ -16,4 +16,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("select s from User s where s.name like %?1%")
     Page<User> findByWord (String fname, Pageable pageable);
+
+    //Optional<User> findByUsername(String username);
 }

@@ -1,5 +1,7 @@
 package com.blogs.blogger.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,17 +13,32 @@ public class User {
     private Long id;
     private String name;
 
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Blog> blog;
+
+    //@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    //@JsonIgnore
+    //private Login login;
 
     public User() {
     }
 
-    public User(Long id, String name, List<Blog> blog) {
+    public User(Long id, String name, List<Blog> blog /*Login login*/) {
         this.id = id;
         this.name = name;
         this.blog = blog;
+        //this.login = login;
     }
+
+    /*public Login getLogin() {
+        return login;
+    }
+
+    public void setLogin(Login login) {
+        this.login = login;
+    }*/
 
     public Long getId() {
         return id;
