@@ -34,11 +34,11 @@ public class UserController {
             @RequestParam(defaultValue = "0") Integer pageNo,
             @RequestParam(defaultValue = "10") Integer pageSize,
             @RequestParam(defaultValue = "id") String sortBy) {
-        List<User> list = userService.getAllUser(pageNo, pageSize, sortBy);
+        List<User> list = userService.getAllUserPaged(pageNo, pageSize, sortBy);
         return list;
     }
 
-    //Search user by name
+    //Search user by user's name
     @GetMapping("/user/search/{word}/{pageNo}/{pageSize}/{sortBy}")
     public List<User> findByWord (@PathVariable String word,
                                   @RequestParam(defaultValue = "0") Integer pageNo,

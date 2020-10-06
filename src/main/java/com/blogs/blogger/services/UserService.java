@@ -31,6 +31,20 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    //Get all paged user
+    public List<User> getAllUserPaged(Integer pageNo, Integer pageSize, String sortBy)
+    {
+        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+
+        Page<User> pagedResult = pageRepository.findAll(paging);
+
+        if(pagedResult.hasContent()) {
+            return pagedResult.getContent();
+        } else {
+            return new ArrayList<User>();
+        }
+    }
+
     //Find By Id
     public User getUserByID(Long id) {
         Optional<User> user = userRepository.findById(id);
@@ -47,8 +61,7 @@ public class UserService {
     }
 
     //update user
-    public User updateUser( Long id,
-                                 User userNew) {
+    public User updateUser( Long id, User userNew) {
         return userRepository.findById(id)
                 .map(student -> {
                     student.setName(userNew.getName());
@@ -65,26 +78,15 @@ public class UserService {
                 });
     }
 
-    //Searching and sorting
+    /*Searching and sorting
     public Page<User> getByWord(Optional<String> word,
                                 Optional<Integer> page, Optional<String> sortBy) {
         return userRepository.findByWord(word.orElse(" "),
                 PageRequest.of(page.orElse(0), 5, Sort.Direction.ASC, sortBy.orElse("id")));
-    }
+    }*/
 
-    public List<User> getAllUser(Integer pageNo, Integer pageSize, String sortBy)
-    {
-        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
 
-        Page<User> pagedResult = pageRepository.findAll(paging);
-
-        if(pagedResult.hasContent()) {
-            return pagedResult.getContent();
-        } else {
-            return new ArrayList<User>();
-        }
-    }
-
+    //Search user by name
     public List<User> getByWord(String word, Integer pageNo,
                                 Integer pageSize, String sortBy) {
 
@@ -98,12 +100,4 @@ public class UserService {
             return new ArrayList<User>();
         }
     }
-
-
-    /*public User updateUser(int id,
-                                 User userNew) {
-        return userRepository.findById(id)
-                .map( user -> {
-                user.setName}
-    }*/
 }

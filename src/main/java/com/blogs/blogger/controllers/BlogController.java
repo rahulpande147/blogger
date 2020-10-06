@@ -17,28 +17,29 @@ public class BlogController {
     @Autowired
     private BlogService blogService;
 
+    //Get blog by UserID
     @GetMapping("/user/{userId}/blog")
     public Optional<Blog> getBlogByUserId (@PathVariable Long userId){
         return blogService.getBlogByUserId(userId);
     }
 
+    //Create blog by UserID
     @PostMapping("/user/{userId}/blog")
     public Blog addBlog(@PathVariable Long userId, @RequestBody Blog blog){
         return blogService.addBlog(userId, blog);
     }
 
+    //Update blog detail by UserID
     @PutMapping("/user/{userId}/blog/{blogId}")
     public Blog updateBlog (@PathVariable Long userId,
                             @PathVariable Long blogId, @RequestBody Blog blog){
         return blogService.updateBlog(userId, blogId, blog);
     }
 
+    //Delete blog by UserID
     @DeleteMapping("/user/{userId}/blog/{blogId}")
     public String delete (@PathVariable Long userId, @PathVariable Long blogId){
 
         return blogService.delete(userId, blogId);
     }
-
-
-
 }

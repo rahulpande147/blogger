@@ -21,15 +21,16 @@ public class BlogService {
     @Autowired
     private UserRepository userRepository;
 
+    //Getting blog by user id
     public Optional<Blog> getBlogByUserId(Long id) {
-
-        if(!blogRepository.existsById(id)) {
-            throw new NotFoundException("not found!");
+        if(!userRepository.existsById(id)) {
+            throw new NotFoundException("User not found!");
         }
 
-        return blogRepository.findById(id);
+        return blogRepository.findByUser_id(id);
     }
 
+    //Add blog to user id
     public Blog addBlog(Long userId, Blog blog) {
         return userRepository.findById(userId)
                 .map(user -> {
@@ -46,6 +47,7 @@ public class BlogService {
                 }).orElseThrow(() -> new NotFoundException(" not found!"));
     }*/
 
+    //Update blog detail
     public Blog updateBlog( Long userID,
                                        Long blogId,
                                        Blog blogNew) {
@@ -62,18 +64,17 @@ public class BlogService {
                 }).orElseThrow(() -> new NotFoundException(" not found!"));
     }
 
-    public String delete( Long userId,
-                                    Long blogId) {
+    //Delete blog
+    public String delete( Long userId, Long blogId) {
 
         if(!userRepository.existsById(userId)) {
-            throw new NotFoundException("Student not found!");
+            throw new NotFoundException("UserId not found!");
         }
-
         return blogRepository.findById(blogId)
                 .map(blog -> {
                     blogRepository.delete(blog);
                     return "Deleted Successfully!";
-                }).orElseThrow(() -> new NotFoundException("Contact not found!"));
+                }).orElseThrow(() -> new NotFoundException("Blogid not found!"));
     }
 
 }

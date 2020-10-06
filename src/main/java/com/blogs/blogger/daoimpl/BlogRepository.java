@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface BlogRepository extends JpaRepository<Blog, Long> {
 
-    Optional<Blog> findById(Long blogId);
+    Optional<Blog> findByUser_id(Long blogId);
 }

@@ -20,6 +20,7 @@ public class Login {
 
     @OneToOne
     @MapsId
+    @JsonIgnore
     //@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private User user;
 
