@@ -1,4 +1,4 @@
-/*package com.blogs.blogger.secconfiguration;
+package com.blogs.blogger.secconfiguration;
 
 import com.blogs.blogger.daoimpl.LoginRepository;
 import com.blogs.blogger.daoimpl.UserRepository;
@@ -29,4 +29,4 @@ public class UserDetailService implements UserDetailsService {
 
     }
 
-}*/
+}

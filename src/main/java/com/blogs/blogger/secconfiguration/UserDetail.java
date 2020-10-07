@@ -1,4 +1,4 @@
-/*package com.blogs.blogger.secconfiguration;
+package com.blogs.blogger.secconfiguration;
 
 import com.blogs.blogger.models.Login;
 import org.springframework.security.core.GrantedAuthority;
@@ -63,4 +63,3 @@ public class UserDetail implements UserDetails {
         return true;
     }
 }
-*/

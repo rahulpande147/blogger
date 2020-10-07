@@ -1,4 +1,4 @@
-/*package com.blogs.blogger.secconfiguration;
+package com.blogs.blogger.secconfiguration;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,4 +36,4 @@ public class Security extends WebSecurityConfigurerAdapter {
     public PasswordEncoder getPasswordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
-}*/
+}

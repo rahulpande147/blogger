@@ -6,6 +6,7 @@ import com.blogs.blogger.services.BlogService;
 import com.blogs.blogger.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -19,6 +20,7 @@ public class BlogController {
 
     //Get blog by UserID
     @GetMapping("/user/{userId}/blog")
+    @PreAuthorize(value = "hasAutority")
     public Optional<Blog> getBlogByUserId (@PathVariable Long userId){
         return blogService.getBlogByUserId(userId);
     }
